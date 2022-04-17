@@ -1,4 +1,7 @@
 <?php
+/**
+ * session_start()
+ */
 include('connection.php');
 session_start();
 ?>
@@ -39,6 +42,7 @@ session_start();
 	
 
 <script>
+	/* mentuBtn comes out on onclick and goes back in on onclick*/
 		var menuBtn=document.getElementById("menuBtn")
 		var sideNav=document.getElementById("sideNav")
 		var menu=document.getElementById("menu")

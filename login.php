@@ -1,4 +1,7 @@
 <?php
+/**
+ * session_start()
+ */
 include('connection.php');
 session_start();
 ?>
@@ -44,6 +47,7 @@ session_start();
          $q=$db->prepare("SELECT * FROM login WHERE fname='$un' && pass='$ps'");
          $q->execute();
          $res=$q->fetchAll(PDO::FETCH_OBJ);
+/*FETCHVALUES ('donor/patient' , (SELECT FROM login WHERE fname='".$un."' & pass='".$ps."'))";*/
          if($res)
          {
 
@@ -79,6 +83,7 @@ session_start();
 
 	
 	<script>
+		/* mentuBtn comes out on onclick and goes back in on onclick*/
 		var menuBtn=document.getElementById("menuBtn")
 		var sideNav=document.getElementById("sideNav")
 		var menu=document.getElementById("menu")

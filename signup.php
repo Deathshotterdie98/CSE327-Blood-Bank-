@@ -1,4 +1,7 @@
 <?php
+/**
+ * session_start()
+ */
 include('connection.php');
 session_start();
 ?>
@@ -66,7 +69,7 @@ session_start();
         $pass=$_POST['pass'];
         
  $q=$db->prepare("INSERT INTO login(fname,lname,email,pass) VALUES (:fname,:lname,:email,:pass)");
-
+/*$query = "INSERT INTO login(fname,lname,email,pass)*/
         
         $q->bindValue('fname',$fname);
         $q->bindValue('lname',$lname);
@@ -105,9 +108,10 @@ session_start();
 	
 
 <script>
+	/* mentuBtn comes out on onclick and goes back in on onclick*/
 		var menuBtn=document.getElementById("menuBtn")
 		var sideNav=document.getElementById("sideNav")
-		
+		var menu=document.getElementById("menu")
 
 				menuBtn.onclick=function(){
 					if(sideNav.style.right=="-250px"){
