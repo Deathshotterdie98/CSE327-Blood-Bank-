@@ -1,6 +1,7 @@
 <?php
 /**
  * session_start()
+ *FETCHVALUES ('donor/patient' , (SELECT FROM login WHERE fname='".$un."' & pass='".$ps."'))";*
  */
 include('connection.php');
 session_start();
@@ -47,7 +48,7 @@ session_start();
          $q=$db->prepare("SELECT * FROM login WHERE fname='$un' && pass='$ps'");
          $q->execute();
          $res=$q->fetchAll(PDO::FETCH_OBJ);
-/*FETCHVALUES ('donor/patient' , (SELECT FROM login WHERE fname='".$un."' & pass='".$ps."'))";*/
+
          if($res)
          {
 
