@@ -1,44 +1,37 @@
 <?php
 /**
- * @param int $user_id
- * 
+ * @param int $id
+ *
  * @return [type]
  */
-function SIGNUP(int $user_id)
+function SIGNUP(int $id)
 {
-    $db_host = "localhost:3307"; /* Server Name*/
-    $db_user = 'root'; /* Username*/
-    $db_pass = ''; /* Password*/
-    $db_name = 'mypro_bbms'; /* Database Name*/
-
-$conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
- if (!$conn) 
+    $db=new PDO('mysql:host=localhost;dbname=mypro_bbms','root','');
+if($db)
 {
-	die ('Failed to connect to MySQL: ' . mysqli_connect_error());	
+    echo "Connect";
 }
-$fname = "shamim";
-$lname = "mullick";
-$email = "shamimmullick98@gmail.com";
-$password = "a123";
-
-
+else
+{
+    echo "Not Connect";
+}
+if(isset($_POST['sub'])){
+        $fname=$_POST['fname'];
+        $lname=$_POST['lname'];
+        $email=@$_POST['email'];
+        $pass=$_POST['pass'];
 $q=$db->prepare("INSERT INTO login(fname,lname,email,pass) VALUES (:fname,:lname,:email,:pass)");
-
   $q->bindValue('fname',$fname);
         $q->bindValue('lname',$lname);
         $q->bindValue('email',$email);
         $q->bindValue('pass',$pass);
-        
-/*$side = "INSERT INTO USER_ROLE(ROLE , USER_ID)*/
-/*VALUES ('customer' , (SELECT ID FROM AUTH_USER WHERE EMAIL='".$email."'))";*/
-
 if($q->execute())
 {
     return true;
-} 
-else 
+}
+else
 {
     return false;
 }
-
+}
 }
